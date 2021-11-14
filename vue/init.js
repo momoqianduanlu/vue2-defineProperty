@@ -1,4 +1,5 @@
 import proxyData from './proxy'
+import observe from './observe'
 
 function initState(vm) {
   let options = vm.$options
@@ -14,6 +15,8 @@ function initData(vm) {
   for (let key in data) {
     proxyData(vm, '_data', key)
   }
+  // 响应式数据
+  observe(vm._data)
 }
 
 export {
